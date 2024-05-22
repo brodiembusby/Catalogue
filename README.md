@@ -1,6 +1,6 @@
 # Catalog a Fullstack Application
 ## Introduction
-This project is a fullstack web application using Great for the frontend and Java with Spring Security for the backend.
+This project is a fullstack web application using React for the frontend and Java with Spring Security for the backend.
 
 ## Technologies Used
 #### Frontend: React, HTML, CSS, JavaScript, Axios
