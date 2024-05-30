@@ -6,8 +6,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    background: #fff;
-    padding: 70px 60px; /* Increase the top and bottom padding */
+    border-radius: 25px;
+    background: #aa7c7c;
+    padding: 70px 60px; 
     text-align: center;
 
 }

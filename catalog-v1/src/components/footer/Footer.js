@@ -2,7 +2,7 @@ import React from "react";
 import './Footer.css';
 const Footer = () => (
     <footer>
-    <p>&copy; Catalouge</p>
+    <p>&copy; Catalog</p>
   </footer>
 )
 

@@ -1,31 +1,42 @@
-text{
-    font-family: "CircularStd-Book";
-    font-size: 14;
-    color: '#2f354b';
-    text-align:center;
-}
 header {
-    background-color: rgb(105, 12, 12);
-    color: white;
-    padding: 20px;
-    position: relative;
-  }
-  
-  nav ul {
-    list-style-type: none;
-    display: flex;
-  }
-  
-  nav ul li {
-    margin-left: 20px;
-    font-size: 16px; /* set a default font-size */
-  }
-  
-  nav ul li:hover {
-    font-size: 18px; /* increase font-size on hover */
-  }
-  
-  nav ul li a {
-    color: #fff;
-    text-decoration: none;
-  }
+  background-color: rgb(105, 12, 12);
+  padding: 20px;
+  position: relative; 
+}
+
+nav {
+  position: relative;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+nav ul li:hover {
+  font-size: 18px;
+  text-shadow: black;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+li#login {
+  position: relative;
+  top: 20px; 
+  right: 20px; 
+}
+
+li#login a {
+  color: aquamarine;
+  text-decoration: none;
+}
