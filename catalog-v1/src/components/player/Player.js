@@ -32,9 +32,7 @@ const Player = ({ cards }) => {
                     </div>
                   </div>
                 </div>
-                <div className='card-review-button-container'>
-                  <Button variant ="info" onClick={() => reviews(card.name)}>Go write a review</Button>
-                </div>
+
               </Paper>
 
             )

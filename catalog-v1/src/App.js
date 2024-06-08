@@ -23,7 +23,7 @@ function App() {
       const singleCard = response.data;
 
       setCard(singleCard);
-      setReviews(singleCard.reviewsIds);
+      setReviews(singleCard.reviewIds);
 
     } catch (e) {
       console.error("Get Card Data", e);
