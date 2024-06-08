@@ -1,5 +1,7 @@
 header {
   background-color: rgb(105, 12, 12);
+  background-image: linear-gradient(to right, rgba(165, 102, 201, 0.384), rgb(238, 9, 9));  padding: 40px;
+
   padding: 20px;
   position: relative; 
 }

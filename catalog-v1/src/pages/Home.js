@@ -5,8 +5,8 @@ import Player from '../components/player/Player';
 const Home = ({ cards }) => {
   return (
     <main>
-      <section className="hero-section">
-        <div className="hero-content">
+      <section className="player-section">
+        <div className="player-content">
           <h1>Welcome to Catalog</h1>
           <p>Organize and explore your favorite collections with ease.</p>
           <Link to="/login" className="btn btn-primary">Get Started</Link>
