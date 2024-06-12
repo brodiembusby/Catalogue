@@ -22,9 +22,9 @@ const styles = {
         cursor: 'pointer',
     },
     collectionImage: {
-        width: '100%', // Set the width to 100% for responsive images
-        height: 'auto', // Automatically adjust the height to maintain aspect ratio
-        marginBottom: '10px', // Add some margin below the image
+        width: '100%',
+        height: 'auto', 
+        marginBottom: '10px', 
     },
     newCollectionButton: {
         padding: '10px 20px',
@@ -37,11 +37,21 @@ const styles = {
     },
 };
 
-const UserCollection = ({ cardCollection, onCreateNewCollection }) => {
+const UserCollection = ({ cards }) => {
     const navigate = useNavigate();
 
-    const handleCollectionClick = (id) => {
-        navigate(`/collection/${id}`);
+    const handleCollectionClick = (cardId) => {
+        navigate(`/cards/${cardId}`);
+    };
+
+    const cardCollection = cards.map(card => ({
+        id: card._id,
+        name: card.name,
+        image: card.image
+    }));
+   
+    const handleCreateNewCollection = () => {
+        // Logic to create a new collection
     };
 
     return (
@@ -53,16 +63,16 @@ const UserCollection = ({ cardCollection, onCreateNewCollection }) => {
                         key={index}
                         style={styles.collectionItem}
                         onClick={() => handleCollectionClick(collection.name)}
-                    >    
+                    >
                         <img
                             src={collection.image}
-                            alt=""
+                            alt="Collection Image"
                             style={styles.collectionImage}
                         />
                     </div>
                 ))}
             </div>
-            <button style={styles.newCollectionButton} onClick={onCreateNewCollection}>
+            <button style={styles.newCollectionButton} >
                 No Create a collection function yet
             </button>
         </div>

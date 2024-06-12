@@ -5,34 +5,26 @@ import ReviewForm from '../reviewForm/ReviewForm';
 import api from '../../api/axiosConfig';
 
 
-const UserCollectionReview = ({ getCardData, card, reviews, setReviews }) => {
+const UserCollectionReview = ({ card, getCardData, reviews, setReviews }) => {
   const revText = useRef();
   let params = useParams();
-  const cardId = params._id;
-
+  const cardId  = params.cardId;
+  
   useEffect(() => {
-    getCardData(cardId);
+    // getCardData(cardId);
+    console.log(cardId)
+    getCardData(card)
   }, []);
-
-  useEffect(() => {
-    console.log(`Fetched collection ID: ${cardId}`);
-  }, [cardId]);
- // THis works
-  useEffect(() => {
-    console.log('Card data:', card);
-    console.log('Card data:', card.cardId);
-    console.log('Card data:', card.Name);
-    console.log('Card data:', cardId);
-    // console.log('Card data:', card.);
-    // console.log('Card data:', card);
-  }, [card]);
 
   const addReview = async (e) => {
     e.preventDefault();
     const rev = revText.current;
 
     try {
-      const response = await api.post("/api/v1/reviews", { reviewBody: rev.value, Name: cardId });
+      const response = await api.post("/api/v1/reviews", { 
+        reviewBody: rev.value, 
+        Name: cardId  
+      });
       const updatedReviews = [...reviews, { body: rev.value }];
 
       rev.value = "";
@@ -49,7 +41,7 @@ const UserCollectionReview = ({ getCardData, card, reviews, setReviews }) => {
       </Row>
       <Row className="mt-2">
         <Col>
-          <img src={card?.image} alt="Card" />
+          <img src={cardId?.image} alt="Card" />
         </Col>
         <Col>
           {

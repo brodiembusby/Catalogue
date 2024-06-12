@@ -37,11 +37,11 @@ function App() {
   return (
     <div className='App'>
       <AppRoutes
+        card={card}
         cards={cards}
         getCardData={getCardData}
         reviews={reviews}
         setReviews={setReviews}
-        card={card}
       />
     </div>
   );

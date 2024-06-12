@@ -1,18 +1,8 @@
 import './Player.css';
 import { Paper } from '@mui/material';
-import { Button } from 'react-bootstrap';
 import Carousel from 'react-material-ui-carousel';
-import { useNavigate } from 'react-router-dom';
-
 const Player = ({ cards }) => {
-  
-  const navigate = useNavigate();
 
-  function reviews(cardId){
-    navigate(`/Reviews/${cardId}`);
-  }
-  
-  
   return (
     <div className='card-carousel-container'>
       <Carousel>
