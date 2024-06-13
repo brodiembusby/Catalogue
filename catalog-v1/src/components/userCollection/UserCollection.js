@@ -41,15 +41,10 @@ const UserCollection = ({ cards }) => {
     const navigate = useNavigate();
 
     const handleCollectionClick = (cardId) => {
+        console.log("Navigating to card ID:", cardId); // Debugging line
         navigate(`/cards/${cardId}`);
     };
 
-    const cardCollection = cards.map(card => ({
-        id: card._id,
-        name: card.name,
-        image: card.image
-    }));
-   
     const handleCreateNewCollection = () => {
         // Logic to create a new collection
     };
@@ -58,21 +53,22 @@ const UserCollection = ({ cards }) => {
         <div style={styles.container}>
             <h2>User cardCollection</h2>
             <div style={styles.collectionList}>
-                {cardCollection.map((collection, index) => (
+                {cards.map((card, index) => (
                     <div
                         key={index}
                         style={styles.collectionItem}
-                        onClick={() => handleCollectionClick(collection.name)}
+                        onClick={() => handleCollectionClick(card.name)}
                     >
                         <img
-                            src={collection.image}
-                            alt="Collection Image"
+                            src={card.image}
+                            alt={card.name}
                             style={styles.collectionImage}
                         />
+                        <div>{card.name}</div>
                     </div>
                 ))}
             </div>
-            <button style={styles.newCollectionButton} >
+            <button style={styles.newCollectionButton} onClick={handleCreateNewCollection}>
                 No Create a collection function yet
             </button>
         </div>

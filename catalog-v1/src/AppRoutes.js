@@ -14,8 +14,8 @@ const AppRoutes = ({ card, cards, getCardData, reviews, setReviews }) => {
         <Route index element={<Home cards={cards} />} />
         <Route path="Login" element={<Login />} />
         <Route path="Contact" element={<Contact />} />
-        <Route path="User" element={<UserCollection cards = {cards} />} />
-        <Route path="/cards/:cardId" element={<UserCollectionReview getCardData= {getCardData} card={card} reviews={reviews} setReviews={setReviews} />} />
+        <Route path="User" element={<UserCollection cards = {cards}  />} />
+        <Route path="/cards/:cardId" element={<UserCollectionReview getCardData={getCardData} card={card} reviews={reviews} setReviews={setReviews} />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

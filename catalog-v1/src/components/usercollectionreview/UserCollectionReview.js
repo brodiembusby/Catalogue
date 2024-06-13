@@ -11,9 +11,20 @@ const UserCollectionReview = ({ card, getCardData, reviews, setReviews }) => {
   const cardId  = params.cardId;
   
   useEffect(() => {
-    // getCardData(cardId);
-    console.log(cardId)
-    getCardData(card)
+    // console.log("Params:", params);
+    // console.log("Params card:", params.card);
+    // console.log("Card ID from params.cardId:", params.cardId);
+    // console.log("Card ID destructured:", cardId);
+    // console.log("Card object ID:", params.cardId?.ObjectId);
+
+
+    // getCardData(params.cardId.ObjectId);
+
+    getCardData(cardId);
+
+    // getCardData("664bbe73e119b3dccfd83950"); // Fallback for debugging
+    // getCardData(params.cardId?.ObjectId);
+    
   }, []);
 
   const addReview = async (e) => {
@@ -41,7 +52,7 @@ const UserCollectionReview = ({ card, getCardData, reviews, setReviews }) => {
       </Row>
       <Row className="mt-2">
         <Col>
-          <img src={cardId?.image} alt="Card" />
+          <img src={card?.image} alt="Card" />
         </Col>
         <Col>
           {

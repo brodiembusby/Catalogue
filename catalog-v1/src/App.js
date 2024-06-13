@@ -4,13 +4,13 @@ import api from './api/axiosConfig';
 import AppRoutes from './AppRoutes';
 
 function App() {
-  const [cards, setCards] = useState([]);
-  const [card, setCard] = useState({});
+  const [cards, setCards] = useState();
+  const [card, setCard] = useState();
   const [reviews, setReviews] = useState([]);
 
   const getCards = async () => {
     try {
-      const response = await api.get('/api/v1/cards');
+      const response = await api.get('/cards');
       setCards(response.data);
     } catch (err) {
       console.log(err);
@@ -19,14 +19,14 @@ function App() {
 
   const getCardData = async (cardId) => {
     try {
-      const response = await api.get(`/api/v1/cards/${cardId}`);
+      const response = await api.get(`/cards/${cardId}`);
       const singleCard = response.data;
 
       setCard(singleCard);
       setReviews(singleCard.reviewIds);
-
+      // setReviews(singleCard.reviews);
     } catch (e) {
-      console.error("Get Card Data", e);
+      console.error(e);
     }
   };
 
