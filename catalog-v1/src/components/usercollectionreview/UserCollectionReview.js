@@ -11,18 +11,8 @@ const UserCollectionReview = ({ card, getCardData, reviews, setReviews }) => {
   const cardId  = params.cardId;
   
   useEffect(() => {
-    // console.log("Params:", params);
-    // console.log("Params card:", params.card);
-    // console.log("Card ID from params.cardId:", params.cardId);
-    // console.log("Card ID destructured:", cardId);
-    // console.log("Card object ID:", params.cardId?.ObjectId);
-
-
-    // getCardData(params.cardId.ObjectId);
-
     getCardData(cardId);
-
-    // getCardData("664bbe73e119b3dccfd83950"); // Fallback for debugging
+    getCardData("664bbe73e119b3dccfd83950"); // Fallback for debugging
     // getCardData(params.cardId?.ObjectId);
     
   }, []);

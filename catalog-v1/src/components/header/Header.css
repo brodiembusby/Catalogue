@@ -1,21 +1,25 @@
 header {
   background-color: rgb(105, 12, 12);
-  background-image: linear-gradient(to right, rgba(165, 102, 201, 0.384), rgb(238, 9, 9));  padding: 40px;
-
+  background-image: linear-gradient(to right, rgba(165, 102, 201, 0.384) 0%, rgb(238, 9, 9) 100%);
   padding: 20px;
-  position: relative; 
-}
-
-nav {
-  position: relative;
 }
 
 nav ul {
   display: flex;
+  text-align: left;
   list-style-type: none;
-  margin: 0;
+
   padding: 0;
 }
+
+/* nav ul.header {
+  margin-right: 50%;
+}
+
+nav ul.loginHeader {
+  float:right;
+   text-align: center; 
+} */
 
 nav ul li {
   margin-left: 20px;
@@ -24,21 +28,9 @@ nav ul li {
 
 nav ul li:hover {
   font-size: 18px;
-  text-shadow: black;
 }
 
 nav ul li a {
   color: #fff;
-  text-decoration: none;
-}
-
-li#login {
-  position: relative;
-  top: 20px; 
-  right: 20px; 
-}
-
-li#login a {
-  color: aquamarine;
   text-decoration: none;
 }

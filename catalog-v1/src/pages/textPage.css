@@ -1,0 +1,66 @@
+
+
+/* Verification and NotFound Page */
+.container{
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+.background-textPage{
+    background-color: rgb(105, 12, 12);
+    background-image: linear-gradient(to right, rgba(165, 102, 201, 0.267), rgb(238, 9, 9));
+    width: 60%;
+    height: 50%;
+    margin: 0 auto;
+    margin-top: 10%;
+    
+}
+
+/* Contact Page */
+.container-contact {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 80vh;
+}
+
+.subHeaderContact {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.subHeaderContactTitle {
+    font-size: 3em;
+    margin: 0;
+}
+
+.sectionContact {
+    margin: 30px 0;
+}
+
+.sectionContactTitle { 
+    font-size: 2em;
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+}
+
+.paragraphContact {
+    font-size: 1.2em;
+    line-height: 1.6em;
+}
+
+.linksContact {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+ 

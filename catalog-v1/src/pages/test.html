@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Template</title>
+    <style>
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 20px;
+            margin: 0;
+            background-color: #f4f4f4;
+            background-image: linear-gradient(to top, rgba(29, 34, 95, 0.1) 5%, rgba(255, 205, 55, 0.1) 75%);
+            min-height: 100vh;
+        }
+        .header {
+            width: 100%;
+            background-color: #0b0c0c;
+            padding: 15px 0;
+        }
+        .header-content {
+            max-width: 580px;
+            margin: 0 auto;
+        }
+        .header-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+            text-align: center;
+        }
+        .main-content {
+            max-width: 580px;
+            width: 80%;
+            margin: 30px auto;
+        }
+        .container {
+            padding: 40px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+        .background-textPage {
+            background-color: rgb(105, 12, 12);
+            background-image: linear-gradient(to right, rgba(119, 42, 163, 0.267), rgb(238, 9, 9));
+            width: 100%;
+            margin: 0 auto;
+        }
+        .activate-link {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1 class="header-title">Confirm your email</h1>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="background-textPage">
+            <div class="container">
+                <p>Hi [NAME],</p>
+                <p>Thank you for registering. Please click on the below link to activate your account:</p>
+                <p><a href="[ACTIVATION_LINK]" class="activate-link">Activate Now</a></p>
+                <p>Link will expire in 15 minutes.</p>
+                <p>See you soon!</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
