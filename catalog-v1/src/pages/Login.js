@@ -48,15 +48,16 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try{
-      const response = await api.get('/login', {
+      const response = await api.post('/auth/signin', {
         email: signUpData.email,
         password: signUpData.password
       });
       console.log(response.data);
-      handleVerificationClick();
+      // toggleSignUp(!isSignUp);
+      // handleVerificationClick();
     }
     catch (e){
-      console.error("Problem Loging in", e);
+      console.error("Problem Logging in", e);
     }
   }
 

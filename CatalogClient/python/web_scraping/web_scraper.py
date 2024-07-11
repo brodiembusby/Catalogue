@@ -43,7 +43,7 @@ try:
                         name = name_col.find('h4', class_='site').get_text(strip=True)
 
                         # Find the "Born" information
-                        born_strong = name_col.find('strong', text='Born:')
+                        born_strong = name_col.find('strong', text='born:')
                         if born_strong:
                             born_text = born_strong.next_sibling.strip()
                         else:
@@ -56,7 +56,7 @@ try:
                         
                         # Optional Args
                         reviewId = []
-                        result.append({'Name': name, 'Year': year, 'Born': born_text, 'Image': 'https://www.tcdb.com' + image_url, "reviewIds": reviewId})
+                        result.append({'name': name, 'year': year, 'born': born_text, 'image': 'https://www.tcdb.com' + image_url, "reviewIds": reviewId})
 
     # Save the result to a JSON file
     with open('result.json', 'w', encoding='utf-8') as f:

@@ -10,24 +10,23 @@ const UserCollectionReview = ({ card, getCardData, reviews, setReviews }) => {
   let params = useParams();
   const cardId  = params.cardId;
   
-  useEffect(() => {
+  useEffect(() => { 
     getCardData(cardId);
-    getCardData("664bbe73e119b3dccfd83950"); // Fallback for debugging
-    // getCardData(params.cardId?.ObjectId);
-    
-  }, []);
+  }, );
 
   const addReview = async (e) => {
     e.preventDefault();
     const rev = revText.current;
-
+  
     try {
-      const response = await api.post("/api/v1/reviews", { 
+      const response = await api.post("/reviews", { 
         reviewBody: rev.value, 
-        Name: cardId  
+        name: cardId  
       });
-      const updatedReviews = [...reviews, { body: rev.value }];
-
+  
+      const newReview = response.data;
+      const updatedReviews = [...reviews, { body: newReview.reviewBody }];
+  
       rev.value = "";
       setReviews(updatedReviews);
     } catch (err) {
@@ -38,7 +37,7 @@ const UserCollectionReview = ({ card, getCardData, reviews, setReviews }) => {
   return (
     <Container>
       <Row>
-        <Col><h3>Reviews</h3></Col>
+        <Col><h3>Review for {card?.name}</h3></Col>
       </Row>
       <Row className="mt-2">
         <Col>
@@ -60,7 +59,7 @@ const UserCollectionReview = ({ card, getCardData, reviews, setReviews }) => {
             </>
           }
           {
-            reviews?.map((r) => {
+            reviews?.map((r, index) => {
               return (
                 <>
                   <Row>

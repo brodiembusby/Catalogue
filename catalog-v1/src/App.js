@@ -24,7 +24,6 @@ function App() {
 
       setCard(singleCard);
       setReviews(singleCard.reviewIds);
-      // setReviews(singleCard.reviews);
     } catch (e) {
       console.error(e);
     }

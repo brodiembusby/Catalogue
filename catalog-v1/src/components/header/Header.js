@@ -12,8 +12,6 @@ const Header = () => (
         <li><Link to="/contact">Contact</Link></li>
         <li className="login"><Link to="/login">Login</Link></li>
       </ul>
-
-
     </nav>
   </header>
 );
