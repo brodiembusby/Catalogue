@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Player from '../components/player/Player';
 
-const Home = ({ cards }) => {
+const Home = ({ collectibles }) => {
   return (
     <main>
       <section className="player-section">
@@ -15,11 +15,11 @@ const Home = ({ cards }) => {
 
       <section className="featured-section">
         <div className="featured-carousel">
-          <Player cards={cards} />
+          <Player collectibles={collectibles} />
         </div>
         <div className="featured-info">
           <h2>Featured Collections</h2>
-          <p>Discover a world of possibilities to catalog your collections. Our platform allows you to create, manage, and share collections of your favorite items, from baseball cards to rare artifacts.</p>
+          <p>Discover a world of possibilities to catalog your collections. Our platform allows you to create, manage, and share collections of your favorite items, from baseball collectibles to rare artifacts.</p>
           <Link to="/User" className="btn btn-secondary">View All Collections</Link>
         </div>
       </section>

@@ -5,7 +5,7 @@ import ReviewForm from '../reviewForm/ReviewForm';
 import api from '../../api/axiosConfig';
 
 
-const UserCollectionReview = ({ card, getCardData, reviews, setReviews }) => {
+const UserCollectionReview = ({ collectible, getCardData, reviews, setReviews }) => {
   const revText = useRef();
   let params = useParams();
   const cardId  = params.cardId;
@@ -37,11 +37,11 @@ const UserCollectionReview = ({ card, getCardData, reviews, setReviews }) => {
   return (
     <Container>
       <Row>
-        <Col><h3>Review for {card?.name}</h3></Col>
+        <Col><h3>Review for {collectible?.name}</h3></Col>
       </Row>
       <Row className="mt-2">
         <Col>
-          <img src={card?.image} alt="Card" />
+          <img src={collectible?.image} alt="Collectible" />
         </Col>
         <Col>
           {

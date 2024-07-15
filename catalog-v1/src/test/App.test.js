@@ -27,15 +27,15 @@ describe('App Component', () => {
     mock.restore();
   });
 
-  it('should fetch card data and update state', async () => {
+  it('should fetch collectible data and update state', async () => {
     const cardId = '123';
     const mockCardData = {
       id: '664bbe73e119b3dccfd83950',
       name: 'No idea the name',
-      reviews: [{ body: 'Great card!' }]
+      reviews: [{ body: 'Great collectible!' }]
     };
 
-    mock.onGet(`/api/v1/cards/${cardId}`).reply(200, mockCardData);
+    mock.onGet(`/api/v1/collectibles/${cardId}`).reply(200, mockCardData);
 
     const { getByText } = render(<App />);
 
@@ -44,14 +44,14 @@ describe('App Component', () => {
       await App.getCardData(cardId);
     });
 
-    expect(App.card).toEqual(mockCardData);
+    expect(App.collectible).toEqual(mockCardData);
     expect(App.reviews).toEqual(mockCardData.reviews);
   });
 
   it('should handle errors', async () => {
     const cardId = '123';
 
-    mock.onGet(`/api/v1/cards/${cardId}`).reply(500);
+    mock.onGet(`/api/v1/collectibles/${cardId}`).reply(500);
 
     console.error = jest.fn(); // Mock console.error to silence the error in test output
 
@@ -61,7 +61,7 @@ describe('App Component', () => {
     });
 
     expect(console.error).toHaveBeenCalledWith(
-      "Man we having problems getting yo card data",
+      "Man we having problems getting yo collectible data",
       expect.any(Error)
     );
   });

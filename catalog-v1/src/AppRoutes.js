@@ -11,16 +11,16 @@ import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import NotFoundPage from "./pages/NotFoundPage";
 
-const AppRoutes = ({ card, cards, getCardData, reviews, setReviews }) => {
+const AppRoutes = ({ collectible, collectibles, getCollectibleData, reviews, setReviews }) => {
   // For collection might be more understandable later to change to collectionId
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home cards={cards} />} />
+        <Route index element={<Home collectibles={collectibles} />} />
         <Route path="Login" element={<Login />} />
         <Route path="Contact" element={<Contact />} />
-        <Route path="User" element={<UserCollection cards = {cards}  />} />
-        <Route path="/cards/:cardId" element={<UserCollectionReview getCardData={getCardData} card={card} reviews={reviews} setReviews={setReviews} />} />
+        <Route path="User" element={<UserCollection collectibles = {collectibles}  />} />
+        <Route path="/collectibles/:collectibleId" element={<UserCollectionReview getCollectibleData={getCollectibleData} collectible={collectible} reviews={reviews} setReviews={setReviews} />} />
         <Route path="/verification" element={<Verification/>} />
         <Route path="/confirmation" element={<Confirmation/>} />
         <Route path="*" element={<NotFoundPage />} />

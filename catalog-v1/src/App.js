@@ -4,41 +4,41 @@ import api from './api/axiosConfig';
 import AppRoutes from './AppRoutes';
 
 function App() {
-  const [cards, setCards] = useState();
-  const [card, setCard] = useState();
+  const [collectibles, setCollectibles] = useState();
+  const [collectible, setCollectible] = useState();
   const [reviews, setReviews] = useState([]);
 
-  const getCards = async () => {
+  const getCollectibles = async () => {
     try {
-      const response = await api.get('/cards');
-      setCards(response.data);
+      const response = await api.get('/collectibles');
+      setCollectibles(response.data);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const getCardData = async (cardId) => {
+  const getCollectibleData = async (collectibleId) => {
     try {
-      const response = await api.get(`/cards/${cardId}`);
-      const singleCard = response.data;
+      const response = await api.get(`/collectibles/${collectibleId}`);
+      const singleCollectible = response.data;
 
-      setCard(singleCard);
-      setReviews(singleCard.reviewIds);
+      setCollectible(singleCollectible);
+      setReviews(singleCollectible.reviewIds);
     } catch (e) {
       console.error(e);
     }
   };
 
   useEffect(() => {
-    getCards();
+    getCollectibles();
   }, []);
 
   return (
     <div className='App'>
       <AppRoutes
-        card={card}
-        cards={cards}
-        getCardData={getCardData}
+        collectible={collectible}
+        collectibles={collectibles}
+        getCollectibleData={getCollectibleData}
         reviews={reviews}
         setReviews={setReviews}
       />

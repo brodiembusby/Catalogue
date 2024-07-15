@@ -1,40 +1,80 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './UserCollection.css'; 
+import api from 'src/api/axiosConfig.js'
 
-const UserCollection = ({ cards }) => {
+const UserCollection = ({ collectibles, UserData }) => {
+    
     const navigate = useNavigate();
-
     const handleCollectionClick = (cardId) => {
-        navigate(`/cards/${cardId}`);
+        navigate(`/collectibles/${cardId}`);
+    };
+    const [newCollection, setNewCollectionData] = useState({
+        name: "",
+        image: "",
+      });
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        setNewCollectionData({
+            ...newCollection,
+            [name]: value,
+        })
+    }
+
+    const handleAddCollectible = async ()  => {
+        
+        e.preventDefault();
+        const rev = revText.current;
+
+        try{
+            const response = await api.post("/collections",{
+                name: rev.name,
+                image: null || rev.image,
+                appUserId: UserData.getId(),
+            })
+        } catch(e){
+            console.error("Add new Collection Error",e)
+        }
     };
 
-    const handleAddCollectible = () => {
-        // Logic to create a new collection
-    };
 
     return (
         <div className="user-container">
-            <h2>[getFirstName] Collections</h2>
+            <h2>[{UserData.getFirstName()}] Collections</h2>
             <div className="user-collection-list">
-                {cards.map((card, index) => (
+                {collectibles.map((collectible, index) => (
                     <div
                         key={index}
                         className="user-collection-item"
-                        onClick={() => handleCollectionClick(card.name)}
+                        onClick={() => handleCollectionClick(collectible.name)}
                     >
                         <img
-                            src={card.image}
-                            alt={card.name}
+                            src={collectible.image}
+                            alt={collectible.name}
                             className="user-collection-image"
                         />
-                        <div>{card.name}</div>
+                        <div>{collectible.name}</div>
                     </div>
                 ))}
             </div>
+            <div className='newButton'> 
+                <input type="collectionName" 
+                name='collectionName'
+                placeholder='Collection Name' 
+                value={newCollection.name} 
+                onChange={handleChange}>
+                </input>
+                
+                {/* <input type="file" 
+                name='collectionImage'
+                placeholder='Collection Name' 
+                value={newCollection.name} 
+                onChange={handleChange}>
+                </input> */}
             <button className="user-new-collection-button" onClick={handleAddCollectible}>
                 No Create a collection function yet
             </button>
+            </div>
         </div>
     );
 };
