@@ -8,7 +8,7 @@ const Home = ({ collectibles }) => {
       <section className="player-section">
         <div className="player-content">
           <h1>Welcome to Catalog</h1>
-          <p>Organize and explore your favorite collections with ease.</p>
+          <p>Organize and explore your favorite piles with ease.</p>
           <Link to="/login" className="btn btn-primary">Get Started</Link>
         </div>
       </section>
@@ -18,9 +18,9 @@ const Home = ({ collectibles }) => {
           <Player collectibles={collectibles} />
         </div>
         <div className="featured-info">
-          <h2>Featured Collections</h2>
-          <p>Discover a world of possibilities to catalog your collections. Our platform allows you to create, manage, and share collections of your favorite items, from baseball collectibles to rare artifacts.</p>
-          <Link to="/User" className="btn btn-secondary">View All Collections</Link>
+          <h2>Featured Piles</h2>
+          <p>Discover a world of possibilities to catalog your piles. Our platform allows you to create, manage, and share piles of your favorite items, from baseball collectibles to rare artifacts.</p>
+          <Link to="/User" className="btn btn-secondary">View All Piles</Link>
         </div>
       </section>
     </main>

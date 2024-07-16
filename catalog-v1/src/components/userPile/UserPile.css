@@ -5,14 +5,14 @@
     padding: 20px;
 }
 
-.user-collection-list {
+.user-pile-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin: 20px 0;
 }
 
-.user-collection-item {
+.user-pile-item {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 20px;
@@ -20,13 +20,13 @@
     cursor: pointer;
 }
 
-.user-collection-image {
+.user-pile-image {
     width: 100%;
     height: auto;
     margin-bottom: 10px;
 }
 
-.user-new-collection-button {
+.user-new-pile-button {
     padding: 10px 20px;
     background-color: #28a745;
     color: #fff;

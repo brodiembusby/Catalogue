@@ -5,13 +5,13 @@ import ReviewForm from '../reviewForm/ReviewForm';
 import api from '../../api/axiosConfig';
 
 
-const UserCollectionReview = ({ collectible, getCardData, reviews, setReviews }) => {
+const UserPileReview = ({ collectible, getCollectibleData, reviews, setReviews }) => {
   const revText = useRef();
   let params = useParams();
-  const cardId  = params.cardId;
+  const collectibleId  = params.collectibleId;
   
   useEffect(() => { 
-    getCardData(cardId);
+    getCollectibleData(collectibleId);
   }, );
 
   const addReview = async (e) => {
@@ -21,7 +21,7 @@ const UserCollectionReview = ({ collectible, getCardData, reviews, setReviews })
     try {
       const response = await api.post("/reviews", { 
         reviewBody: rev.value, 
-        name: cardId  
+        name: collectibleId  
       });
   
       const newReview = response.data;
@@ -85,4 +85,4 @@ const UserCollectionReview = ({ collectible, getCardData, reviews, setReviews })
   )
 }
 
-export default UserCollectionReview;
+export default UserPileReview;

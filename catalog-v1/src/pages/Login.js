@@ -1,23 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState , useContext} from 'react';
 import './Login.css';
 import api from '../api/axiosConfig';
 import {  useNavigate } from 'react-router-dom';
+import "../components/failedItems/LoginFail.js"
+import FailedLogin from '../components/failedItems/LoginFail.js';
+import FailedSignUp from '../components/failedItems/SignUpFail.js';
+
+import AuthContext from '../context/AuthProvider.js';
+
+const LOGIN_URL = '/auth/login';
+const REGISTER_URL = '/registration';
+const VERFICATION_URL = '/verification';
+const USER_URL = '/profile';
 
 /**
  * Login Component
  * This component handles both sign-in and sign-up forms.
  */
 const Login = () => {
+  
   const navigate = useNavigate();
+  const[caughtComponent, setCaughtComponent] = useState(null);
+  const [isSignUp, setIsSignUp] = useState(true);
+  const {setAuth} = useContext(AuthContext);
+  
+  const toggleSignUp = () => {
+    setIsSignUp(!isSignUp);
+  };
   const handleVerificationClick = () =>{
     if(isSignUp)
-      navigate('/verification');
+      navigate(VERFICATION_URL);
     else{
-      navigate('/UserCollection');
+      navigate(USER_URL);
     }
   }
-
-  const [isSignUp, setIsSignUp] = useState(true);
+  
   const [signUpData, setSignUpData] = useState({
     firstName: "",
     lastName: "",
@@ -36,34 +53,49 @@ const Login = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try{
-      const response = await api.post('/registration', signUpData);
+      const response = await api.post(REGISTER_URL, signUpData);
       console.log(response.data);
       handleVerificationClick();
     }
     catch (e){
+      setCaughtComponent(() => <FailedSignUp />)
       console.error("Problem Signing Up", e);
     }
   }
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    try{
-      const response = await api.post('/auth/signin', {
-        email: signUpData.email,
-        password: signUpData.password
-      });
+    try {
+      const response = await api.post(LOGIN_URL, 
+        JSON.stringify({
+          email: signUpData.email,
+          password: signUpData.password
+        }), {
+          headers: {
+            'Content-Type': 'application/json',
+            withCredentials: true,
+            maxRedirects: 0
+          }
+        }
+      );
       console.log(response.data);
-      // toggleSignUp(!isSignUp);
+      // const accessToken = response?.data.accessToken;
+      // const roles = response?.data.roles;
+      // setAuth({
+      //   email: signUpData.email, 
+      //   password: signUpData.password, 
+      //   name: signUpData.firstName + " " + signUpData.lastName,
+      // });
+
+      toggleSignUp(!isSignUp);
       // handleVerificationClick();
-    }
-    catch (e){
+    } catch (e) {
+      if(!isSignUp){
+        setCaughtComponent(() => <FailedLogin />)
+      }
       console.error("Problem Logging in", e);
     }
   }
-
-  const toggleSignUp = () => {
-    setIsSignUp(!isSignUp);
-  };
 
   return (
     <main>
@@ -83,6 +115,7 @@ const Login = () => {
               name="firstName"
               placeholder="First Name"
               value={signUpData.firstName}
+              required
               onChange={handleChange}
             />
           </div>
@@ -94,6 +127,7 @@ const Login = () => {
               name="lastName"
               placeholder="Last Name"
               value={signUpData.lastName}
+              required
               onChange={handleChange}
             />
           </div>
@@ -107,6 +141,7 @@ const Login = () => {
           name="email"
           placeholder="Email"
           value={signUpData.email}
+          required
           onChange={handleChange}
         />
       </div>
@@ -118,12 +153,13 @@ const Login = () => {
           name="password"
           placeholder="Password"
           value={signUpData.password}
+          required
           onChange={handleChange}
         />
       </div>
-      <p>Lost password <a href="#">Click Here!</a></p>
     </div>
     {/* Toggle sign-up/sign-in button */}
+    {caughtComponent}
     <div className="btn-field">
       <button
         type="button"

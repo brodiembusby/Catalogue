@@ -1,0 +1,8 @@
+.login-failed{
+    background-color: hsl(0, 20%, 94%);
+    border: .25rem solid transparent;
+    box-shadow: 2px 2px 7px 1px #c73c05;
+    position: relative;
+    border-radius: 12px;
+    bottom: 15px;
+}
