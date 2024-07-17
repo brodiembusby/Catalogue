@@ -1,5 +1,6 @@
 import React from "react";
-import "../failedItems/LoginFail.css"
+import "./../componentsCSS/LoginFail.css"
+
 const FailedLogin = () => {
     return (
       <section className="login-failed">

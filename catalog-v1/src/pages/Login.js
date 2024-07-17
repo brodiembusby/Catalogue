@@ -1,12 +1,12 @@
-import React, { useState , useContext} from 'react';
-import './Login.css';
+import React, { useState} from 'react';
+import './pagesCSS/Login.css';
 import api from '../api/axiosConfig';
 import {  useNavigate } from 'react-router-dom';
-import "../components/failedItems/LoginFail.js"
-import FailedLogin from '../components/failedItems/LoginFail.js';
-import FailedSignUp from '../components/failedItems/SignUpFail.js';
+import "../components/componentsJS/LoginFail.js"
+import FailedLogin from '../components/componentsJS/LoginFail.js';
+import FailedSignUp from '../components/componentsJS/SignUpFail.js';
 
-import AuthContext from '../context/AuthProvider.js';
+import useAuth from '../hooks/useAuth.js';
 
 const LOGIN_URL = '/auth/login';
 const REGISTER_URL = '/registration';
@@ -22,7 +22,9 @@ const Login = () => {
   const navigate = useNavigate();
   const[caughtComponent, setCaughtComponent] = useState(null);
   const [isSignUp, setIsSignUp] = useState(true);
-  const {setAuth} = useContext(AuthContext);
+  
+  // global AUthentication
+  const {setAuth} = useAuth();
   
   const toggleSignUp = () => {
     setIsSignUp(!isSignUp);
@@ -79,7 +81,7 @@ const Login = () => {
         }
       );
       console.log(response.data);
-      // const accessToken = response?.data.accessToken;
+      const accessToken = response?.data.accessToken;
       // const roles = response?.data.roles;
       // setAuth({
       //   email: signUpData.email, 

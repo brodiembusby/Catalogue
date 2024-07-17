@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
-import ReviewForm from '../reviewForm/ReviewForm';
+import ReviewForm from './ReviewForm';
 import api from '../../api/axiosConfig';
 
 
-const UserPileReview = ({ collectible, getCollectibleData, reviews, setReviews }) => {
+const Review = ({ collectible, getCollectibleData, reviews, setReviews }) => {
   const revText = useRef();
   let params = useParams();
   const collectibleId  = params.collectibleId;
@@ -85,4 +85,4 @@ const UserPileReview = ({ collectible, getCollectibleData, reviews, setReviews }
   )
 }
 
-export default UserPileReview;
+export default Review;

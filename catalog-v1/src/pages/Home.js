@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Player from '../components/player/Player';
+import Player from "../components/componentsJS/Player.js"
 
 const Home = ({ collectibles }) => {
   return (

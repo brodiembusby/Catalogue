@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import './Header.css';
+import "./../componentsCSS/Header.css"
 // TODO: If user is signed in then change login to their first name
 
 const Header = () => (

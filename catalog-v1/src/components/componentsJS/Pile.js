@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import './UserPile.css'; 
+import "./../componentsCSS/UserPile.css"
 import api from '../../api/axiosConfig';
 import React, { useState } from 'react';
 /*
@@ -9,7 +9,7 @@ TODO: separate collectibles and piles
 
 */
 const PILES_URL = '/piles'
-const UserPile = ({collectibles}) => {
+const Pile = ({collectibles}) => {
     
     const navigate = useNavigate();
     const [ collectionName, setPileName] = useState('');
@@ -88,4 +88,4 @@ const UserPile = ({collectibles}) => {
     );
 };
 
-export default UserPile;
+export default Pile;

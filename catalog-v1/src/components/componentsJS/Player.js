@@ -1,4 +1,4 @@
-import './Player.css';
+import "./../componentsCSS/Player.css"
 import { Paper } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
 const Player = ({ collectibles }) => {

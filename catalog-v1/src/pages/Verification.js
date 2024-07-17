@@ -1,5 +1,5 @@
 import React from 'react';
-import './textPage.css';
+import './pagesCSS/textPage.css';
 
 const Verification = () => {
     return (

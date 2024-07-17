@@ -1,4 +1,4 @@
-import './textPage.css';
+import './pagesCSS/textPage.css';
 
 const Confirmation = () => {
 
