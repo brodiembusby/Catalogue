@@ -1,22 +1,51 @@
-import React, {useContext} from "react";
-// import AuthContext from "./src/context/AuthContext";
-import AuthContext from "../../context/AuthProvider";
-const UserProfile = () => {
-    const {auth} = useContext(AuthContext);
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import api from '../../api/axiosConfig';
+import useAuth from '../../hooks/useAuth';
 
-    return (
-        <div>
-            <h1> User Profile</h1>
-            {auth ?( <div> 
+const COLLECTIBLES_URL = '/collectibles';
 
-                <p> Email: {auth.email}</p>
-                <p> Password: {auth.password}</p>
+const PileDetail = () => {
+  const { pileId } = useParams();
+  const { auth } = useAuth();
+  const [collectibles, setCollectibles] = useState([]);
 
-            </div>) : 
-            (<p> No user is logged in.</p>) 
-            }
-        </div>
-    );
+  useEffect(() => {
+    const fetchCollectibles = async () => {
+      try {
+        const response = await api.get(`${COLLECTIBLES_URL}/${pileId}`, {
+          headers: {
+            'Authorization': `Bearer ${auth.accessToken}`
+          }
+        });
+        setCollectibles(response.data);
+      } catch (error) {
+        console.error("Failed to fetch collectibles", error);
+      }
+    };
+
+    if (auth?.accessToken) {
+      fetchCollectibles();
+    }
+  }, [auth, pileId]);
+
+  return (
+    <div>
+      <h1>Collectibles in Pile</h1>
+      <div className="collectible-list">
+        {collectibles.map((collectible, index) => (
+          <div key={index} className="collectible-item">
+            <img
+              src={collectible.image}
+              alt={collectible.name}
+              className="collectible-image"
+            />
+            <div>{collectible.name}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
-export default UserProfile;
+export default PileDetail;
