@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Player from "../components/componentsJS/Player.js"
 
-const Home = ({ collectibles }) => {
+const Home = ({ cards }) => {
   return (
     <main>
       <section className="player-section">
@@ -15,12 +15,13 @@ const Home = ({ collectibles }) => {
 
       <section className="featured-section">
         <div className="featured-carousel">
-          <Player collectibles={collectibles} />
+          <Player cards={cards} />
         </div>
         <div className="featured-info">
-          <h2>Featured Piles</h2>
-          <p>Discover a world of possibilities to catalog your piles. Our platform allows you to create, manage, and share piles of your favorite items, from baseball collectibles to rare artifacts.</p>
-          <Link to="/User" className="btn btn-secondary">View All Piles</Link>
+          <h2>Store Your items!</h2>
+          <p>Discover a world of possibilities to catalog your collectibles. 
+            Our platform allows you to create, manage, and share piles of your favorite items, 
+            from baseball cards to rare artifacts.</p>
         </div>
       </section>
     </main>

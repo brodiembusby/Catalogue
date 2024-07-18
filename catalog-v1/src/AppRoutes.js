@@ -13,21 +13,27 @@ import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import NotFoundPage from "./pages/NotFoundPage";
 import RequireAuth from './components/componentsJS/RequireAuth';
-
-const AppRoutes = ({ collectible, collectibles, getCollectibleData, reviews, setReviews }) => {
+/**
+ * 
+ *  For Later
+ *  getCollectibleData={getCollectibleData} 
+    collectible={collectible} 
+    reviews={reviews} 
+    setReviews={setReviews}
+ *          <Route path="/piles" element={<Pile collectibles={collectibles} />} />
+          <Route path="/piles/:pileId" element={<Review 
+ * 
+ * **/
+const AppRoutes = ({ cards }) => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home collectibles={collectibles} />} />
+        <Route index element={<Home cards={cards} />} />
 
         {/* <Route element={<RequireAuth />}> */}
           <Route path="/profile" element={<UserProfile />} />
-          <Route path="/piles" element={<Pile collectibles={collectibles} />} />
-          <Route path="/piles/:pileId" element={<Review 
-            getCollectibleData={getCollectibleData} 
-            collectible={collectible} 
-            reviews={reviews} 
-            setReviews={setReviews} />} />
+
+ />} />
         {/* </Route> */}
 
         <Route path="/contact" element={<Contact />} />

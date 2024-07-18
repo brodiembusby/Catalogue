@@ -17,7 +17,7 @@ try:
     all_h3_years = soup.find_all('h3', class_='site', string=lambda text: text and text.isdigit())
 
     # Set the range of years you want to process
-    start_year = 2019
+    start_year = 2006
     end_year = 2024
 
     result = []
