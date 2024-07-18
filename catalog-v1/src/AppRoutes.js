@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 // Components
 import Layout from "./components/componentsJS/Layout.js";
-import Pile from "./components/componentsJS/Pile.js";
+import Pile from "./components/componentsJS/Pile";
 import UserProfile from "./components/componentsJS/UserProfile.js";
 import Review from "./components/componentsJS/Review.js";
 
@@ -32,6 +32,7 @@ const AppRoutes = ({ cards }) => {
 
         {/* <Route element={<RequireAuth />}> */}
           <Route path="/profile" element={<UserProfile />} />
+          <Route path="/piles" element={<Pile />} />
         {/* </Route> */}
 
         <Route path="/contact" element={<Contact />} />

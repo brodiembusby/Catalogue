@@ -2,17 +2,11 @@ import { useNavigate } from 'react-router-dom';
 import './UserPile.css'; 
 import api from '../../api/axiosConfig';
 import React, { useState } from 'react';
-/*
-
-This page is for all user piles 
-TODO: separate collectibles and piles 
-
-*/
 
 const COLLECTIBLES_URL = '/collectibles'
-const UserPile = ({collectibles}) => {
-    
-    const navigate = useNavigate();
+
+const UserPile = () => {
+        
     const handlePileClick = (collectibleId) => {
         navigate(`/piles/${collectibleId}`);
     };

@@ -1,92 +1,45 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import "./../componentsCSS/UserPile.css"
+import PopUpPile from './PopUpPile'; 
 import api from '../../api/axiosConfig';
-import React, { useState } from 'react';
-/*
-
-This page is for all user piles 
-TODO: separate collectibles and piles 
-
-*/
+// const EMAIL = getAuth().email
+const EMAIL = "brodiembusby@hotmail.com"
+const PILE_IMAGE = "https://picsum.photos/200/300"
 
 const PILES_URL = '/piles'
-const Pile = ({collectibles}) => {
-    
+const Pile = () => {
     const navigate = useNavigate();
-    const [ collectionName, setPileName] = useState('');
-    const [ collectionImage, setPileImage] = useState('');
 
-    const handlePileClick = (collectibleId) => {
-        navigate(`/piles/${collectibleId}`);
-    };
-    const [newPile, setNewPileData] = useState({
-        name: "",
-        image: "",
-      });
-    const handleChange = (e) => {
-        const {name, value} = e.target;
-        setNewPileData({
-            ...newPile,
-            [name]: value,
-        })
-    }
-
-    const handleAddPiles = async ()  => {
-        
-        e.preventDefault();
-        const rev = revText.current;
-
-        try{
-            const response = await api.post(PILES_URL,{
-                name: rev.name,
-                image: null || rev.image,
-                appUserId: UserData.getId(),
-            })
-        } catch(e){
-            console.error("Add new Pile Error",e)
+    const handleAddPile = async (newPileName) => {
+        try {
+            const response = await api.post(PILES_URL, JSON.stringify({
+                email: EMAIL,
+                image: PILE_IMAGE,
+                name: newPileName
+            }), {
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'Authorization': `Bearer ${auth.accessToken}`
+                }
+            });
+            console.log('Pile added successfully:', response.data);
+            console.log(newPileName);
+            // You might want to update your list of piles here
+        } catch (e) {
+            console.error('Add new Pile Error', e);
         }
     };
-
 
     return (
         <div className="user-container">
             <h2>[getFirstName] Piles</h2>
             <div className="user-pile-list">
-                {piles.map((piles, index) => (
-                    <div
-                        key={index}
-                        className="user-pile-item"
-                        onClick={() => handlePileClick(piles.name)}
-                    >
-                        <img
-                            src={piles.image}
-                            alt={piles.name}
-                            className="user-pile-image"
-                        />
-                        <div>{piles.name}</div>
-                    </div>
-                ))}
+                {/* Display list of piles here */}
             </div>
-            <div className='newButton'> 
-                <input type="collectionName" 
-                name='collectionName'
-                placeholder='Pile Name' 
-                value={newPile.name} 
-                onChange={handleChange}>
-                </input>
-                
-                {/* <input type="file" 
-                name='collectionImage'
-                placeholder='Pile Name' 
-                value={newPile.name} 
-                onChange={handleChange}>
-                </input> */}
-            <button className="user-new-pile-button" onClick={handleAddPiles}>
-                No Create a pile function yet
-            </button>
+            <div className='add-pile-button'>
+                <PopUpPile onSave={handleAddPile} />
             </div>
         </div>
     );
 };
-
 export default Pile;
