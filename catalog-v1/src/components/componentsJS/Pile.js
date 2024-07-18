@@ -1,68 +1,92 @@
-import React, { useState, useEffect } from "react";
-import useAuth from "../../hooks/useAuth";
-import api from '../../api/axiosConfig';
 import { useNavigate } from 'react-router-dom';
+import "./../componentsCSS/UserPile.css"
+import api from '../../api/axiosConfig';
+import React, { useState } from 'react';
+/*
 
-const PILES_URL = '/piles';
+This page is for all user piles 
+TODO: separate collectibles and piles 
 
-const UserProfile = () => {
-  const { auth } = useAuth();
-  const navigate = useNavigate();
-  const [piles, setPiles] = useState([]);
+*/
 
-  useEffect(() => {
-    const fetchPiles = async () => {
-      try {
-        const response = await api.get(PILES_URL, {
-          headers: {
-            'Authorization': `Bearer ${auth.accessToken}`
-          }
-        });
-        setPiles(response.data);
-      } catch (error) {
-        console.error("Failed to fetch piles", error);
-      }
+const PILES_URL = '/piles'
+const Pile = ({collectibles}) => {
+    
+    const navigate = useNavigate();
+    const [ collectionName, setPileName] = useState('');
+    const [ collectionImage, setPileImage] = useState('');
+
+    const handlePileClick = (collectibleId) => {
+        navigate(`/piles/${collectibleId}`);
+    };
+    const [newPile, setNewPileData] = useState({
+        name: "",
+        image: "",
+      });
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        setNewPileData({
+            ...newPile,
+            [name]: value,
+        })
+    }
+
+    const handleAddPiles = async ()  => {
+        
+        e.preventDefault();
+        const rev = revText.current;
+
+        try{
+            const response = await api.post(PILES_URL,{
+                name: rev.name,
+                image: null || rev.image,
+                appUserId: UserData.getId(),
+            })
+        } catch(e){
+            console.error("Add new Pile Error",e)
+        }
     };
 
-    if (auth?.accessToken) {
-      fetchPiles();
-    }
-  }, [auth]);
 
-  const handlePileClick = (pileId) => {
-    navigate(`/piles/${pileId}`);
-  };
-
-  return (
-    <div>
-      <h1>User Profile</h1>
-      {auth ? (
-        <div>
-          <p>Email: {auth.email}</p>
-          <p>Role: {auth.role}</p>
-          <h2>Your Piles</h2>
-          <div className="user-pile-list">
-            {piles.map((pile, index) => (
-              <div
-                key={index}
-                className="user-pile-item"
-                onClick={() => handlePileClick(pile._id)}
-              >
-                <img
-                  src={pile.image}
-                  alt={pile.name}
-                  className="user-pile-image"
-                />
-                <div>{pile.name}</div>
-              </div>
-            ))}
-          </div>
+    return (
+        <div className="user-container">
+            <h2>[getFirstName] Piles</h2>
+            <div className="user-pile-list">
+                {piles.map((piles, index) => (
+                    <div
+                        key={index}
+                        className="user-pile-item"
+                        onClick={() => handlePileClick(piles.name)}
+                    >
+                        <img
+                            src={piles.image}
+                            alt={piles.name}
+                            className="user-pile-image"
+                        />
+                        <div>{piles.name}</div>
+                    </div>
+                ))}
+            </div>
+            <div className='newButton'> 
+                <input type="collectionName" 
+                name='collectionName'
+                placeholder='Pile Name' 
+                value={newPile.name} 
+                onChange={handleChange}>
+                </input>
+                
+                {/* <input type="file" 
+                name='collectionImage'
+                placeholder='Pile Name' 
+                value={newPile.name} 
+                onChange={handleChange}>
+                </input> */}
+            <button className="user-new-pile-button" onClick={handleAddPiles}>
+                No Create a pile function yet
+            </button>
+            </div>
         </div>
-      ) : (
-        <p>No user is logged in.</p>
-      )}
-    </div>
-  );
+    );
 };
 
-export default UserProfile;
+export default Pile;

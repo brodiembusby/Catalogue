@@ -4,10 +4,9 @@ import Footer from './Footer';
 
 const Layout = () => (
 
-  // Outlet Is what brings Player in
   <>
   <Header />
-  <Outlet/>
+    <Outlet/>
   <Footer />
   </>
 

@@ -32,8 +32,6 @@ const AppRoutes = ({ cards }) => {
 
         {/* <Route element={<RequireAuth />}> */}
           <Route path="/profile" element={<UserProfile />} />
-
- />} />
         {/* </Route> */}
 
         <Route path="/contact" element={<Contact />} />
