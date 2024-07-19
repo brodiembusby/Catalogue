@@ -2,8 +2,8 @@ import { Routes, Route } from "react-router-dom";
 // Components
 import Layout from "./components/componentsJS/Layout";
 import Pile from "./components/componentsJS/Pile";
-import UserProfile from "./components/componentsJS/UserProfile";
-import Review from "./components/componentsJS/Review";
+// import UserProfile from "./components/componentsJS/UserProfile";
+// import Review from "./components/componentsJS/Review";
 
 // Pages 
 import Verification from "./pages/Verification";
@@ -23,7 +23,7 @@ const AppRoutes = ({ cards }) => {
         <Route index element={<Home cards={cards} />} />
 
         <Route element={<RequireAuth />}>
-          <Route path="profile" element={<UserProfile />} />
+          {/* <Route path="profile" element={<UserProfile />} /> */}
           <Route path="piles" element={<Pile />} />
         </Route>
 

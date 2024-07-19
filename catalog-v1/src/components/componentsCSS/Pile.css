@@ -4,15 +4,18 @@
     align-items: center;
     padding: 20px;
 }
-
-.user-pile-list {
+/* .user-title{
+    display: flex;
+    fel
+} */
+.pile-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin: 20px 0;
 }
 
-.user-pile-item {
+.pile-item {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 20px;
@@ -20,13 +23,13 @@
     cursor: pointer;
 }
 
-.user-pile-image {
+.pile-image {
     width: 100%;
     height: auto;
     margin-bottom: 10px;
 }
 
-.user-new-pile-button {
+.add-pile-button {
     padding: 10px 20px;
     background-color: #28a745;
     color: #fff;
@@ -35,3 +38,11 @@
     cursor: pointer;
     margin-top: 20px;
 }
+
+/* user-container
+user-pile-list
+pile-list
+pile-item
+pile-image
+add-pile-button
+ */

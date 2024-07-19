@@ -7,7 +7,7 @@ const RequireAuth = ({}) => {
 
     // Only if we have a user will these work
     return (
-        auth?.email 
+        auth?.email
          ? <Outlet />
          : <Navigate to="/login" state={{from:location}} replace/>
     );
