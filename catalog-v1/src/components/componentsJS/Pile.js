@@ -88,7 +88,7 @@ const Pile = () => {
                         <div key={index} className="pile-item">
                             <h2>{pile.name}</h2>
                             <img
-                                onClick={() => goToPile(pile.id)}
+                                onClick={() => goToPile(pile.name)}
                                 src={pile.image}
                                 alt={pile.name}
                                 className="pile-image"

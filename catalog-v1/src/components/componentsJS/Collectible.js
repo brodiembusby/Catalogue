@@ -16,8 +16,8 @@ const Collectible = ({allCards}) => {
     // Get the indivdual pile
     const getPile = async (pileId) => {
         try {
-            const response = await api.get(`/piles/669b0f5b21be1c36eb50c4d7/single`, {
-                // const response = await api.get(`/api/v1/piles/${pileId}/single`, {
+            // const response = await api.get(`/piles/669b0f5b21be1c36eb50c4d7/single`, {
+                const response = await api.get(`/api/v1/piles/${pileId}/single`, {
 
                 headers: {
                     'Content-Type': 'application/json',
