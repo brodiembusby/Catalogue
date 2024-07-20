@@ -6,18 +6,25 @@ import "./../componentsCSS/Pile.css"
 
 const Collectible = ({allCards}) => {
     const { auth } = useAuth();
-    let params = useParams();
-    const pileId = params.pileId; 
+
     const [collectibles, setCards] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredCards, setFilteredCards] = useState([]);
     const [showAddCards, setShowAddCards] = useState(false);
+    
+    const revText = useRef();
+    let params = useParams();
+    const pileId = params.pileId; 
+    useEffect(() => {
+        getPile(pileId);
+        setFilteredCards(allCards);
+    }, [pileId, allCards]);
 
     // Get the indivdual pile
     const getPile = async (pileId) => {
         try {
             // const response = await api.get(`/piles/669b0f5b21be1c36eb50c4d7/single`, {
-                const response = await api.get(`/api/v1/piles/${pileId}/single`, {
+                const response = await api.get(`/piles/${pileId}/name`, {
 
                 headers: {
                     'Content-Type': 'application/json',
@@ -46,7 +53,7 @@ const Collectible = ({allCards}) => {
                     'Authorization': `Bearer ${auth.accessToken}`
                 }
             });
-            handleAddCard(response.data.id);
+            handleAddCard(response.data.name);
         } catch (e) {
             console.error("Failed to get card", e);
         }
@@ -54,6 +61,7 @@ const Collectible = ({allCards}) => {
 
     // Then add the card to the collection
     const handleAddCard = async(cardId) => {
+        e.preventDefault();
         try {
             const response = await api.post(`/piles/${pileId}/cards`, JSON.stringify({
                 cardId: cardId,
@@ -81,10 +89,6 @@ const Collectible = ({allCards}) => {
         setFilteredCards(filtered);
     }
 
-    useEffect(() => {
-        getPile(pileId);
-        setFilteredCards(allCards);
-    }, [pileId, allCards]);
 
     return (
         <div className="user-container">
@@ -102,7 +106,7 @@ const Collectible = ({allCards}) => {
                     />
                     <div className="pile-list">
                         {filteredCards.map((card, index) => (
-                            <div key={index} className="pile-item" onClick={() => handleCardClick(card._id)}>
+                            <div key={index} className="pile-item" onClick={() => handleCardClick(card.name)}>
                                 <h2>{card.name}</h2>
                                 <img
                                     src={card.image}
