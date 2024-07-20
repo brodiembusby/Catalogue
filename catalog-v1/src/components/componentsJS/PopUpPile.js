@@ -21,7 +21,7 @@ export default function PopUpPile({ onSave }) {
             onClose={() => setOpen(false)}
         >
             <div>
-                <h4>Create New Pile</h4>
+                <h4>Create New Collection</h4>
                 <label>
                     Name:
                     <input 

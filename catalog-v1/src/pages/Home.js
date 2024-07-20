@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Player from "../components/componentsJS/Player.js"
 
-const Home = ({ cards }) => {
+const Home = ({ randomCards }) => {
   return (
     <main>
       <section className="player-section">
@@ -15,7 +15,7 @@ const Home = ({ cards }) => {
 
       <section className="featured-section">
         <div className="featured-carousel">
-          <Player cards={cards} />
+          <Player randomCards={randomCards} />
         </div>
         <div className="featured-info">
           <h2>Store Your items!</h2>

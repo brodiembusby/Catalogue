@@ -1,23 +1,23 @@
 import "./../componentsCSS/Player.css"
 import { Paper } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
-const Player = ({ cards }) => {
+const Player = ({ randomCards }) => {
 
   return (
     <div className='collectibles-carousel-container'>
       <Carousel>
         {
-          cards?.map((cards) => {
+          randomCards?.map((randomCards) => {
             return (
-              <Paper key={cards.name}>
+              <Paper key={randomCards.name}>
                 <div className='cards-container'>
                   <div className='player-cards'>
                     <div className='cards-bio'>
                       <div className='cards-image'>
-                        <img src={cards.image} alt="" />
+                        <img src={randomCards.image} alt="" />
                       </div>
                       <div className='cards-title'>
-                        <h4>{cards.name}</h4>
+                        <h4>{randomCards.name}</h4>
                       </div>
                     </div>
                   </div>

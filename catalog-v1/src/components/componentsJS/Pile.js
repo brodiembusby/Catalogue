@@ -15,7 +15,7 @@ const Pile = () => {
 
     const [piles, setPiles] = useState([]);
     const [userId, setUserId] = useState(null);
-    let params = useParams();
+    // let params = useParams();
 
     const getUserId = async () => {
         try {

@@ -21,10 +21,10 @@ const AppRoutes = ({ randomCards, allCards }) => {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home randomCards={randomCards} />} />
 
-        {/* <Route element={<RequireAuth />}> */}
+        <Route element={<RequireAuth />}>
           <Route path="piles" element={<Pile />} />
           <Route path="piles/:pileId" element={<Collectible allCards={allCards} />} />
-        {/* </Route> */}
+        </Route>
 
         <Route path="register" element={<Register />} />
         <Route path="contact" element={<Contact />} />
