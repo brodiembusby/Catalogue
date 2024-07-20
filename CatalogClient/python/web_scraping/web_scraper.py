@@ -56,7 +56,7 @@ try:
                         
                         # Optional Args
                         reviewId = []
-                        result.append({'name': name, 'year': year, 'description': born_text, 'image': 'https://www.tcdb.com' + image_url, "reviewIds": reviewId})
+                        result.append({'name': name, 'description': born_text, 'image': 'https://www.tcdb.com' + image_url})
 
     # Save the result to a JSON file
     with open('result.json', 'w', encoding='utf-8') as f:

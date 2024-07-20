@@ -4,7 +4,7 @@ import api from './api/axiosConfig';
 import AppRoutes from './AppRoutes';
 
 function App() {
-  const [cards, setCards] = useState([]);
+  const [randomCards, setCards] = useState([]);
   const [allCards, setAllCards] = useState([]);
 
 // Helper function to shuffle an array
@@ -39,7 +39,8 @@ const getCards = async () => {
   return (
     <div className='App'>
       <AppRoutes
-        cards={cards}
+        randomCards={randomCards}
+        allCards={allCards}
       />
     </div>
   );

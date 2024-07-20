@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useParams } from 'react-router-dom';
 import PopUpPile from './PopUpPile'; 
 import api from '../../api/axiosConfig';
 import useAuth from '../../hooks/useAuth';
@@ -15,6 +15,7 @@ const Pile = () => {
 
     const [piles, setPiles] = useState([]);
     const [userId, setUserId] = useState(null);
+    let params = useParams();
 
     const getUserId = async () => {
         try {
@@ -24,8 +25,7 @@ const Pile = () => {
                     'Authorization': `Bearer ${auth.accessToken}`
                 }
             });
-            const idAsString = String(response.data.id); // Convert to string
-            setUserId(idAsString); // Set userId as a string
+            setUserId(response.data.id);
         } catch (e) {
             console.error("Failed to get userId", e);
         }
@@ -55,7 +55,6 @@ const Pile = () => {
         fetchData();
     }, [userId]); // Depend on userId so that it updates piles when userId changes
 
-
     const handleAddPile = async (newPileName) => {
         try {
             const response = await api.post(PILES_URL, {
@@ -75,6 +74,10 @@ const Pile = () => {
         }
     };
 
+    const goToPile = (pileId) => {
+        navigate(`/piles/${pileId}`);
+    }
+
     return (
         <div className="user-container">
             <h1>{auth.email}</h1>
@@ -82,10 +85,11 @@ const Pile = () => {
                 <h1>All Collections</h1>
                 <div className="pile-list">
                     {piles.map((pile, index) => (
-                        <div key={pile.id } className="pile-item">
+                        <div key={index} className="pile-item">
                             <h2>{pile.name}</h2>
                             <img
-                                src={pile.image} 
+                                onClick={() => goToPile(pile.id)}
+                                src={pile.image}
                                 alt={pile.name}
                                 className="pile-image"
                             />

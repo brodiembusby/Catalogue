@@ -2,8 +2,6 @@ import { Routes, Route } from "react-router-dom";
 // Components
 import Layout from "./components/componentsJS/Layout";
 import Pile from "./components/componentsJS/Pile";
-// import UserProfile from "./components/componentsJS/UserProfile";
-// import Review from "./components/componentsJS/Review";
 
 // Pages 
 import Verification from "./pages/Verification";
@@ -15,17 +13,18 @@ import NotFoundPage from "./pages/NotFoundPage";
 import Register from "./pages/Register";
 
 import RequireAuth from './components/componentsJS/RequireAuth';
+import Collectible from "./components/componentsJS/Collectible";
 
-const AppRoutes = ({ cards }) => {
+const AppRoutes = ({ randomCards, allCards }) => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home cards={cards} />} />
+        <Route index element={<Home randomCards={randomCards} />} />
 
-        <Route element={<RequireAuth />}>
-          {/* <Route path="profile" element={<UserProfile />} /> */}
+        {/* <Route element={<RequireAuth />}> */}
           <Route path="piles" element={<Pile />} />
-        </Route>
+          <Route path="piles/:pileId" element={<Collectible allCards={allCards} />} />
+        {/* </Route> */}
 
         <Route path="register" element={<Register />} />
         <Route path="contact" element={<Contact />} />
