@@ -1,6 +1,7 @@
 {
   "name": "catalog-v1",
   "version": "0.1.0",
+  "homepage": "https://brodiembusby.github.io/Catalogue",
   "private": true,
   "proxy": "http://localhost:8080",
   "dependencies": {
@@ -19,12 +20,14 @@
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.3.1",
     "react-material-ui-carousel": "^3.4.2",
-    "react-router-dom": "^6.23.1",
+    "react-route r-dom": "^6.23.1",
     "react-scripts": "5.0.1",
     "reactjs-popup": "^2.0.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -44,6 +47,7 @@
   },
   "devDependencies": {
     "axios-mock-adapter": "^1.22.0",
+    "gh-pages": "^6.2.0",
     "jest": "^27.5.1"
   }
 }
