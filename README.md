@@ -33,5 +33,7 @@ mail.dev
 
 
 ### Ports for running
-#### Frontend: http://localhost:3000
-#### Backend: http://localhost:8080
+#### Frontend: http://localhost:3000 [FrontEnd Link Repo]( https://github.com/brodiembusby/Catalogue)
+
+#### Backend: http://localhost:8080 [BackEnd Link Repo]( https://github.com/brodiembusby/CatalogBackend)
+
