@@ -6,13 +6,13 @@ const Contact = () => {
         <div className='container-contact'>
     <header className='subHeaderContact'>
         <h1 className='subHeaderContactTitle'>Brodie Busby</h1>
-        <p>Senior in College | Software Engineering</p>
+        <p>Bachelor's in Software Engineering</p>
     </header>
 
     <section className='sectionContact' id="about">
         <h2 className='sectionContactTitle'>About Me</h2>
         <p className='paragraphContact'>
-            Hello! I'm Brodie Busby, a senior in college studying Software Engineering. I hold certificates in Embedded Systems and Software Design. Although I sometimes find the journey challenging, I'm passionate about technology and enjoy solving complex problems.
+            Hello! I'm Brodie Busby, I graduated from BYUI with a Bachelor's in Software Engineering. I hold certificates in Embedded Systems and Software Design. Although I sometimes find the journey challenging, I'm passionate about technology and enjoy solving complex problems.
         </p>
     </section>
 
